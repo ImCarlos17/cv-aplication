@@ -1,10 +1,11 @@
 import React from "react";
 import uniqid from "uniqid";
+import ButtonDelete from "./ButtonDelete";
 
-export default function StudyIntitutes({ institutes }) {
+export default function StudyIntitutes({ institutes, deleteInstitute }) {
   return (
     <React.Fragment key={uniqid()}>
-      <div className="info-component">
+      <div className="info-component" id={institutes.id}>
         <div className="info-component-date">
           <h4>
             {institutes.from} / {institutes.to}
@@ -16,6 +17,7 @@ export default function StudyIntitutes({ institutes }) {
           </h4>
           <bold>Carrer: {institutes.carrer}.</bold>
         </div>
+        <ButtonDelete delete={deleteInstitute} />
       </div>
     </React.Fragment>
   );

@@ -33,6 +33,7 @@ export default function FormEditAdd({ fields, addState }) {
             );
           })}
           <FromToDates />
+
           <AddBtn>Add</AddBtn>
           <EditButton handleVisible={handleVisible}></EditButton>
         </form>

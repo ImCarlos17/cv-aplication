@@ -97,8 +97,18 @@
 
 .button-add {
   border-radius: 5px;
-  background-color: rgb(51, 51, 51);
-  color: rgb(238, 238, 238);
+  background-color: #28a745;
+  color: black;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.button-delete {
+  border-radius: 5px;
+  background-color: #dc3545;
+  color: black;
+  font-weight: bold;
+  border: 1px solid black;
 }
 
 .button-edit {

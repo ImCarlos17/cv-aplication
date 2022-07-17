@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import StudyIntitutes from "../StudyInstitutes";
 import uniqid from "uniqid";
-
 import FormEditAdd from "./FormsEdit/FormEditAdd";
+import StudyIntitutes from "./StudyInstitutes";
 
 export default function Education() {
   const [institutes, setInstitutes] = useState([]);
@@ -14,8 +13,20 @@ export default function Education() {
       carrer: e.target.Carrer.value,
       from: e.target.fromDate.value,
       to: e.target.toDate.value,
+      id: uniqid(),
     };
     setInstitutes([...institutes, institute]);
+  };
+
+  const findedInstituteId = (e) => {
+    return e.path[2].id;
+  };
+
+  const deleteInstitute = (e) => {
+    const newArr = institutes.filter(
+      (institute) => institute.id !== findedInstituteId(e)
+    );
+    setInstitutes(newArr);
   };
   return (
     <React.Fragment key={uniqid()}>
@@ -23,7 +34,12 @@ export default function Education() {
         <h3 className="titles">Education</h3>
         <hr />
         {institutes.map((insitute) => {
-          return <StudyIntitutes institutes={insitute} />;
+          return (
+            <StudyIntitutes
+              institutes={insitute}
+              deleteInstitute={deleteInstitute}
+            />
+          );
         })}
 
         <FormEditAdd

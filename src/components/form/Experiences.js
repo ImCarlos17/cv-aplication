@@ -13,9 +13,22 @@ export default function Experiences() {
       city: e.target.City.value,
       from: e.target.fromDate.value,
       to: e.target.toDate.value,
+      id: uniqid(),
     };
 
     setExperiences([...experiences, experience]);
+  };
+
+  const findedExperienceId = (e) => {
+    return e.path[2].id;
+  };
+
+  const deleteExperiencie = (e) => {
+    const newArr = experiences.filter(
+      (experience) => experience.id !== findedExperienceId(e)
+    );
+
+    setExperiences(newArr);
   };
 
   return (
@@ -24,7 +37,7 @@ export default function Experiences() {
         <h3 className="titles">Experience</h3>
         <hr />
         {experiences.map((exp) => {
-          return <Experience exp={exp} />;
+          return <Experience exp={exp} deleteExperiencie={deleteExperiencie} />;
         })}
 
         <FormEditAdd
